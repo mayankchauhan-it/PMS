@@ -1,0 +1,35 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block title %} <title> LIST OF CUSTOMERS | PMS | PROPERTY MANAGEMENT SYSTEM </title> {% endblock title %}
+
+{% block content %}
+   <!-- Page Content  -->
+   <div id="content-page" class="content-page">
+    <div class="container-fluid">
+       <div class="row">
+         {% for c in customers_data %}
+            <div class="col-sm-6 col-md-6 col-lg-3 ">
+            <div class="iq-card iq-card-block iq-card-stretch iq-card-height rounded-5">
+               <div class="iq-card-body iq-box-relative ">
+                  <div class="iq-box-absolute icon iq-icon-box rounded-circle iq-bg-primary">
+                     <i class="fa fa-building "></i>
+                  </div>
+                  <p class="text-primary font-weight-bold">{{ c.customer_name }}</p>
+                  <div class="d-flex align-items-center justify-content-between">
+                     <h4 class="text-secondary"><b>Mobile No: {{ c.phone_no }}</b></h4>
+                  </div>
+                  <div class="iq-box-absolute icon iq-icon-box rounded-circle iq-bg-primary">
+                     <i class="fa fa-building "></i>
+                  </div>
+                  <p class="text-primary font-weight-bold"><i class="fa fa-envelope mr-2"></i>{{ c.email }}</p>
+               </div>
+            </div>
+         </div>
+         {% endfor %}
+       </div>
+    </div>
+ </div>
+
+
+{% endblock content %}

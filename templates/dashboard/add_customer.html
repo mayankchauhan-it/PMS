@@ -1,0 +1,76 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block title %} <title> ADD BUILDING | PMS | PROPERTY MANAGEMENT SYSTEM </title> {% endblock title %}
+
+{% block content %}
+   <!-- Page Content  -->
+   <div id="content-page" class="content-page rounded">
+    <div class="container-fluid rounded">
+        <div class="row justify-content-center">
+            <div class="col-sm-12 col-lg-10">
+                <div class="iq-card card rounded">
+                    <div class="iq-card-header d-flex justify-content-between">
+                        <div class="iq-header-title">
+                            <h4 class="card-title">Add Customer</h4>
+                        </div>
+                    </div>
+                    <div class="iq-card-body">
+                        <form method="post" action="{% url 'add_customer' %}">
+                            {% csrf_token %}
+                            <div class="form-row">
+                                <div class="col-md-12 mb-3">
+                                    <label for="customer_name">Customer Name</label>
+                                    <input type="text" maxlength="50" class="form-control" id="customer_name" name="customer_name" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="validationDefaultUsername">Email</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroupPrepend2">@</span>
+                                        </div>
+                                        <input type="email" maxlength="40" class="form-control" id="email" name="email" aria-describedby="inputGroupPrepend2" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="validationDefault03">Phone No.:</label>
+                                    <input type="tel" maxlength="10" pattern="[0-9]{10}" class="form-control" id="Phone_no" name="Phone_no" required>
+                                    <small id="phoneHelp" class="form-text text-muted">Please enter a 10-digit phone number.</small>
+                                </div>
+
+                                <div class="col-md-6 mb-3" >
+                                    <label for="type">Buildings:</label>
+                                    <select class="form-control" id="building" name="building" >
+                                        <option value="">Select Building</option>
+                                        {% for building in buildings %}
+                                            <option value="{{ building.id }}">{{ building.building_name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+
+
+                                <div class="form-group col-md-6">
+                                    <label for="type">People:</label>
+                                    <select class="form-control" id="people" name="people" >
+                                        <option value="">Select People</option>
+                                        {% for p in people %}
+                                            <option value="{{ p.id }}">{{ p.people_name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <button class="btn btn-primary" type="submit">Submit form</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock content %}
