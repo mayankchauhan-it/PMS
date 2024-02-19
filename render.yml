@@ -4,7 +4,7 @@ services:
     plan: free
     env: python
     region: Ohio (US East)  # Change to your desired region
-    startCommand: "gunicorn core.wsgi:application"  # Adjust the app name and path
+    startCommand: "gunicorn core.wsgi:app"  # Adjust the app name and path
     envVars:
       - key: DEBUG
         value: False
