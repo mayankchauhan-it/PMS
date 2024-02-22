@@ -3,63 +3,78 @@
 
 {% block title %} <title> LIST PEOPLE | PMS | PROPERTY MANAGEMENT SYSTEM </title> {% endblock title %}
 
-{% block content %}
-   <!-- Page Content  -->
-   <div id="content-page" class="content-page">
-    <div class="container-fluid">
-       <div class="row">
-          {% comment %} <div class="col-sm-12">
-             <div class="iq-card">
-                <div class="iq-card-header d-flex justify-content-between">
-                   <div class="iq-header-title">
-                      <h4 class="card-title">Total Resources</h4>
-                   </div>
-                </div>
-                <div class="iq-card-body">
-                   <div class="table-responsive">
-                      <table id="datatable" class="table table-striped table-bordered">
-                         <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Mobile No</th>
-                                <th>People Type</th>
-                            </tr>
-                         </thead>
-                         <tbody>
-                            {% for person in people %}
-                            <tr>
-                                <td>{{ person.people_name }}</td>
-                                <td>{{ person.mobile_no }}</td>
-                                <td>{{ person.get_people_type_display }}</td>
-                            </tr>
-                            {% endfor %}
-                         </tbody>
-                      </table>
-                   </div>
-                </div>
-             </div>
-          </div> {% endcomment %}
 
-          {% for person in people %}
-          <div class="col-sm-6 col-md-6 col-lg-3 ">
-            <div class="iq-card iq-card-block iq-card-stretch iq-card-height rounded-5">
-               <div class="iq-card-body iq-box-relative ">
-                  <div class="iq-box-absolute icon iq-icon-box rounded-circle iq-bg-primary">
-                     <i class="fa fa-user-circle-o"></i>
+{% block extrahead %}
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/2.0.0/css/dataTables.dataTables.css" />
+
+{% endblock extrahead %}
+
+{% block content %}
+  <!-- Page Content  -->
+  <div id="content-page" class="content-page">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-sm-12">
+            <div class="iq-card">
+               <div class="iq-card-header">
+                  <div class="iq-header-title d-flex justify-content-between p-3">
+                     <h4 class="card-title">Resource List</h4>
+                     <a href="{% url 'add_people' %}" class="btn btn-dark bg-gradient-primary font-weight-bold">
+                        ADD RESOURCE
+                     </a>
                   </div>
-                  <p class="text-primary font-weight-bold">{{ person.people_name }}</p>
-                  <div class="d-flex align-items-center justify-content-between">
-                     <h4 class="text-secondary"><b>Mobile No: {{ person.mobile_no }}</b></h4>
-                     {% comment %} <div id="iq-chart-box1"></div> {% endcomment %}
-                     <span class="text-primary"><i class="fa fa-circle mr-2"></i><b>{{ person.get_people_type_display }}</b></span>
+               </div>
+               <div class="iq-card-body">
+                  <div class="table-responsive">
+                     <table id="datatable" class="table table-striped table-bordered" >
+                        <thead>
+                           <tr >
+                              <th class="text-center">NAME</th>
+                              <th class="text-center">PHONE NO.</th>
+                              <th class="text-center">TYPE</th>
+                              <th class="text-center">Actions</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           {% for person in people %}
+                           <tr>
+                              <td class="text-center">{{ person.people_name }}</td>
+                              <td class="text-center">{{ person.mobile_no }}</td>
+                              <td class="text-center">{{ person.get_people_type_display }}</td>
+                              <td class="text-center">
+                                 <!-- Edit Button -->
+                                 <button class="btn btn-outline-dark" style="padding: 0.8rem 0.8rem;" onclick="editHospital({{ hospital.id }})">
+                                    <i class="fa fa-edit fa-2x"></i>
+                                 </button>
+                                    
+                                 <!-- Delete Button -->
+                                 <a href="#" class="btn btn-outline-dark" style="padding: 0.8rem 0.8rem;">
+                                    <i class="fa fa-trash fa-2x"></i>
+                                 </a>
+                              </td>
+                           </tr>
+                           {% endfor %}
+                        </tbody>
+                     </table>
                   </div>
                </div>
             </div>
          </div>
-         {% endfor %}
-       </div>
-    </div>
- </div>
+      </div>
+   </div>
+</div>
 
 
 {% endblock content %}
+
+
+{% block extra_js %}
+<script src="https://cdn.datatables.net/2.0.0/js/dataTables.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+<script>
+   let table = new DataTable('#datatable');
+</script>
+
+{% endblock extra_js %}

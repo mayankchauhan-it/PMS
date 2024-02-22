@@ -23,7 +23,7 @@ def add_people(request):
 
         add_people.save()
 
-        return redirect('add_people')
+        return redirect('people_list')
 
     person_type = {
         'electrician' : 'Electrician',
@@ -56,7 +56,7 @@ def add_building(request):
 
         add_building.save()
 
-        return redirect('add_building')
+        return redirect('building_list')
 
 
     context= {
@@ -88,7 +88,7 @@ def add_customer(request):
 
         add_customer.save()
 
-        return redirect('add_customer')
+        return redirect('customer_list')
 
     buildings = Building.objects.all()
     people = People.objects.all()

@@ -32,9 +32,9 @@
                         <i class="ri-arrow-right-s-line iq-arrow-right"></i>
                     </a>
                     <ul id="customer_master" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-                        <li class="{% if 'add_customer' in segment %}active{% endif %}">
+                        {% comment %} <li class="{% if 'add_customer' in segment %}active{% endif %}">
                             <a href="{% url 'add_customer' %}"><i class="fa fa-plus-circle"></i>Add Customer</a>
-                        </li>
+                        </li> {% endcomment %}
 
                         <li class="{% if 'customer_list' in segment %}active{% endif %}">
                             <a href="{% url 'customer_list' %}"><i class="fa fa-bars"></i>List Customer</a>
@@ -50,9 +50,9 @@
                         <i class="ri-arrow-right-s-line iq-arrow-right"></i>
                     </a>
                     <ul id="site_master" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-                        <li class="{% if 'add_building' in segment %}active{% endif %}">
+                        {% comment %} <li class="{% if 'add_building' in segment %}active{% endif %}">
                             <a href="{% url 'add_building' %}"><i class="fa fa-plus-circle"></i>Add Site Details</a>
-                        </li>
+                        </li> {% endcomment %}
                         <li class="{% if 'building_list' in segment %}active{% endif %}">
                             <a href="{% url 'building_list' %}"><i class="fa fa-bars"></i>List Of Sites</a>
                         </li>
@@ -67,9 +67,9 @@
                         <i class="ri-arrow-right-s-line iq-arrow-right"></i>
                     </a>
                     <ul id="resource_master" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-                        <li class="{% if 'add_people' in segment %}active{% endif %}">
+                        {% comment %} <li class="{% if 'add_people' in segment %}active{% endif %}">
                             <a href="{% url 'add_people' %}"><i class="fa fa-plus-circle"></i>Add Resource Details</a>
-                        </li>
+                        </li> {% endcomment %}
                         <li class="{% if 'listOf_people' in segment %}active{% endif %}">
                             <a href="{% url 'people_list' %}"><i class="fa fa-bars"></i>List Of Resources</a>
                         </li>
