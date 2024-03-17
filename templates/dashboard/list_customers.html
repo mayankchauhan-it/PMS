@@ -1,0 +1,112 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block title %} <title> LIST OF CUSTOMERS | PMS | PROPERTY MANAGEMENT SYSTEM </title> {% endblock title %}
+
+{% block extrahead %}
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/2.0.0/css/dataTables.dataTables.css" />
+
+{% endblock extrahead %}
+
+
+{% block content %}
+   {% comment %} <!-- Page Content  -->
+   <div id="content-page" class="content-page">
+    <div class="container-fluid">
+       <div class="row">
+         {% for c in customers_data %}
+            <div class="col-sm-6 col-md-6 col-lg-3 ">
+            <div class="iq-card iq-card-block iq-card-stretch iq-card-height rounded-5">
+               <div class="iq-card-body iq-box-relative ">
+                  <div class="iq-box-absolute icon iq-icon-box rounded-circle iq-bg-primary">
+                     <i class="fa fa-building "></i>
+                  </div>
+                  <p class="text-primary font-weight-bold">{{ c.customer_name }}</p>
+                  <div class="d-flex align-items-center justify-content-between">
+                     <h4 class="text-secondary"><b>Mobile No: {{ c.phone_no }}</b></h4>
+                  </div>
+                  <div class="iq-box-absolute icon iq-icon-box rounded-circle iq-bg-primary">
+                     <i class="fa fa-building "></i>
+                  </div>
+                  <p class="text-primary font-weight-bold"><i class="fa fa-envelope mr-2"></i>{{ c.email }}</p>
+               </div>
+            </div>
+         </div>
+         {% endfor %}
+       </div>
+    </div>
+ </div> {% endcomment %}
+
+ <!-- Page Content  -->
+ <div id="content-page" class="content-page">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-sm-12">
+            <div class="iq-card">
+               <div class="iq-card-header">
+                  <div class="iq-header-title d-flex justify-content-between p-3">
+                     <h4 class="card-title">Add Customer</h4>
+                     <a href="{% url 'add_customer' %}" class="btn btn-dark bg-gradient-primary font-weight-bold">
+                        ADD CUSTOMER
+                     </a>
+                  </div>
+               </div>
+               <div class="iq-card-body">
+                  {% comment %} <p>Images in Bootstrap are made responsive with <code>.img-fluid</code>. <code>max-width: 100%;</code> and <code>height: auto;</code> are applied to the image so that it scales with the parent element.</p> {% endcomment %}
+                  <div class="table-responsive">
+                     <table id="datatable" class="table table-striped table-bordered" >
+                        <thead>
+                           <tr >
+                              <th class="text-center">Customer Name</th>
+                              <th class="text-center">Email</th>
+                              <th class="text-center">Phone No.</th>
+                              <th class="text-center">Building</th>
+                              <th class="text-center">Resources</th>
+                              <th class="text-center">Actions</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           {% for c in customers_data %}
+                           <tr>
+                              <td class="text-center">{{ c.customer_name }}</td>
+                              <td class="text-center">{{ c.email }}</td>
+                              <td class="text-center">{{ c.phone_no }}</td>
+                              <td class="text-center">{{ c.building }}</td>
+                              <td class="text-center">{{ c.resources }}</td>
+                              <td class="text-center">
+                                 <!-- Edit Button -->
+                                 <button class="btn btn-outline-dark" style="padding: 0.8rem 0.8rem;" onclick="editHospital({{ hospital.id }})">
+                                    <i class="fa fa-edit fa-2x"></i>
+                                 </button>
+                                    
+                                 <!-- Delete Button -->
+                                 <a href="#" class="btn btn-outline-dark" style="padding: 0.8rem 0.8rem;">
+                                    <i class="fa fa-trash fa-2x"></i>
+                                 </a>
+                              </td>
+                           </tr>
+                           {% endfor %}
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+
+{% endblock content %}
+
+
+{% block extra_js %}
+<script src="https://cdn.datatables.net/2.0.0/js/dataTables.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+<script>
+   let table = new DataTable('#datatable');
+</script>
+
+{% endblock extra_js %}

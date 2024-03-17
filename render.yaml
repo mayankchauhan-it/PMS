@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: Property Management Service  # Replace with your desired service name
+    plan: free
+    env: python
+    region: Ohio (US East)  # Change to your desired region
+    startCommand: "gunicorn PMS.wsgi:application"  # Adjust the app name and path
+    envVars:
+      - key: DEBUG
+        value: False
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4
