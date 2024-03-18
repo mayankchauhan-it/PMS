@@ -6,7 +6,6 @@ def index(request):
     return render(request, "dashboard/index.html")
 
 
-
 def add_people(request):
 
     if request.method == "POST":
@@ -124,6 +123,7 @@ def building_list(request):
     return render(request, 'dashboard/list_buildings.html', context=context)
 
 def customer_list(request):
+    # to store all the objects instence of Model.
     all_customer = Customer.objects.all()
 
     context = {
@@ -131,17 +131,49 @@ def customer_list(request):
         'segment' : 'customer_list',
         'customers_data': all_customer
     }
+    
+    
+    
     return render(request, 'dashboard/list_customers.html', context=context)
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-def people_list(request):
-    all_people = Peoples.objects.all()
+
+
+
+
+def udita_customer_list(request):
+    
+    all_customers = udita_Customer.objects.all()
+    
+    context = {
+        'menuItem' : 'udita_customer',
+        'submenu_name' : 'udita_customer_list',
+        'customers' : all_customers
+    }
+    
+    return render(request, 'dashboard/udita_customer_list.html', context=context)
+
+
+def udita_building_list(request):
+    all_building = udita_Building.objects.all()
+
+    context = {
+        'parent' : 'building',
+        'segment' : 'building_list',
+        'buildings': all_building
+    }
+    return render(request, 'dashboard/udita_building_list', context=context)
+    
+    
+def udita_people_list(request):
+    all_people = udita_People.objects.all()
 
     context = {
         'parent' : 'people',
         'segment' : 'listOf_people',
         'people': all_people
     }
-    return render(request, 'dashboard/list_people.html', context=context)
+    return render(request, 'dashboard/udita_people_list', context=context)
+    

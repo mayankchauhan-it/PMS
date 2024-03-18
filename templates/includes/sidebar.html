@@ -39,6 +39,11 @@
                         <li class="{% if 'customer_list' in segment %}active{% endif %}">
                             <a href="{% url 'customer_list' %}"><i class="fa fa-bars"></i>List Customer</a>
                         </li>
+
+                        <li class="{% if 'udita_customer_list' in submenu_name %}active{% endif %}">
+                            <a href="{% url 'udita_customer_list' %}"><i class="fa fa-bars"></i>List Customer</a>
+                        </li>
+                        
                     </ul>
                 </li>
 
@@ -55,6 +60,10 @@
                         </li> {% endcomment %}
                         <li class="{% if 'building_list' in segment %}active{% endif %}">
                             <a href="{% url 'building_list' %}"><i class="fa fa-bars"></i>List Of Sites</a>
+                        </li>
+
+                        <li class="{% if 'building_list' in segment %}active{% endif %}">
+                            <a href="{% url 'udita_building_list' %}"><i class="fa fa-bars"></i>List Of Sites</a>
                         </li>
                     </ul>
                 </li>
@@ -73,6 +82,10 @@
                         <li class="{% if 'listOf_people' in segment %}active{% endif %}">
                             <a href="{% url 'people_list' %}"><i class="fa fa-bars"></i>List Of Resources</a>
                         </li>
+
+                        <li class="{% if 'listOf_people' in segment %}active{% endif %}">
+                            <a href="{% url 'udita_people_list' %}"><i class="fa fa-bars"></i>List Of Resources</a>
+                        </li>
                     </ul>
                 </li>
 
@@ -80,7 +93,7 @@
                 <hr>
 
 {% comment %} ------------ ----------------------------------- ----------------{% endcomment %}
-                <!-- Customer Master ...-->
+                <!-- Customer Master-->
                 <li aria-expanded="true" class="{% if 'Customer' in parent %}active{% endif %}">
                     <a href="#customer_master" class="iq-waves-effect" data-toggle="collapse" aria-expanded="false">
                         <i class="fa fa-user iq-arrow-left"></i> <!-- Font Awesome Users Icon -->

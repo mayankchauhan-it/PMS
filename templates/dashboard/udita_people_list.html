@@ -1,0 +1,85 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block title %} <title> LIST PEOPLE | PMS | PROPERTY MANAGEMENT SYSTEM </title> {% endblock title %}
+
+
+{% block extrahead %}
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/2.0.0/css/dataTables.dataTables.css" />
+
+{% endblock extrahead %}
+
+{% block content %}
+  <!-- Page Content  -->
+  <div id="content-page" class="content-page">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-sm-12">
+            <div class="iq-card">
+               <div class="iq-card-header">
+                  <div class="iq-header-title d-flex justify-content-between p-3">
+                     <h4 class="card-title">Resource List</h4>
+                     <a href="{% url 'add_people' %}" class="btn btn-dark bg-gradient-primary font-weight-bold">
+                        ADD RESOURCE
+                     </a>
+                  </div>
+               </div>
+               <div class="iq-card-body">
+                  <div class="table-responsive">
+                     <table id="datatable" class="table table-striped table-bordered" >
+                        <thead>
+                           <tr >
+                              <th class="text-center">NAME</th>
+                              <th class="text-center">PHONE NO.</th>
+                              <th class="text-center">TYPE</th>
+                              <th class="text-center">ADDRESS</th>
+
+
+                           </tr>
+                        </thead>
+                        <tbody>
+                           {% for person in people %}
+                           <tr>
+                              <td class="text-center">{{ person.people_name }}</td>
+                              <td class="text-center">{{ person.mobile_no }}</td>
+                              <td class="text-center">{{ person.get_people_type_display }}</td>
+                              <td class="text-center">{{ person.people_address }}</td>
+
+
+                              <td class="text-center">
+                                 <!-- Edit Button -->
+                                 <button id="Udita{{ i.id }}" class="btn btn-outline-dark" style="padding: 0.8rem 0.8rem;" onclick="editHospital({{ hospital.id }})">
+                                    <i class="fa fa-edit fa-2x"></i>
+                                 </button>
+                                    
+                                 <!-- Delete Button -->
+                                 <a href="#" class="btn btn-outline-dark" style="padding: 0.8rem 0.8rem;">
+                                    <i class="fa fa-trash fa-2x"></i>
+                                 </a>
+                              </td>
+                           </tr>
+                           {% endfor %}
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+
+{% endblock content %}
+
+
+{% block extra_js %}
+<script src="https://cdn.datatables.net/2.0.0/js/dataTables.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+<script>
+   let table = new DataTable('#datatable');
+</script>
+
+{% endblock extra_js %}
