@@ -1,0 +1,11 @@
+Whenever You Clone the repo. You Don't need to hit the "seturl" command. 
+
+2. Check Current Branch ~~~ "git branch -v"
+
+3. Change Working Branch ~~~ "git checkout {branch name}"   // { Replace branch name }
+
+
+
+
+
+Where is the developed file and folder ??
