@@ -46,7 +46,7 @@ class Customer(models.Model):
 
 class udita_People(models.Model):
     Person_type_chioce = [
-        ('worker','Worker'),
+        ('worker','Workerrr'),
         ('teacher','Teacher'),
         ('employee','Employee'),
     ]
