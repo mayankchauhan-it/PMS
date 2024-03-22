@@ -13,6 +13,14 @@ urlpatterns = [
     # Customer URL
     path('add_customer', views.add_customer, name='add_customer'),  
     path('customer_list', views.customer_list, name='customer_list'), 
-
-
+    
+    
+    
+    
+    # Udita's Development
+    
+    path('udita_customer_list', views.udita_customer_list, name='udita_customer_list'), 
+    path('udita_building_list', views.udita_building_list, name='udita_building_list'), 
+    path('udita_people_list', views.udita_people_list, name='udita_people_list'), 
+     
 ]
